@@ -5,7 +5,7 @@
 <section class="banner">
     <div class="carousel">
         <div class="carousel-item active">
-            <img src="./images/furniture.jpg" alt="Banner">
+            <img src="{{ asset('images/furniture.jpg') }}" alt="Banner">
             <div class="carousel-caption">
                 <h2>Furniture Ruang Tamu Diskon 70%</h2>
                 <p>Momen Kumpul Bersama Keluarga Jadi Lebih Nyaman</p>
@@ -17,24 +17,19 @@
 
 <!-- Category Section -->
 <section class="categories">
-    <h2 class="section-title">Kategori</h2>
+    <h2 class="section-title">Produk Terbaru</h2>
     <div class="category-list">
-        <div class="category-item">
-            <img src="./images/meja.jpg" alt="Kategori 1">
-            <p>Furnitur</p>
-        </div>
-        <div class="category-item">
-            <img src="https://via.placeholder.com/200" alt="Kategori 2">
-            <p>Kasur & Linen</p>
-        </div>
-        <div class="category-item">
-            <img src="https://via.placeholder.com/200" alt="Kategori 3">
-            <p>Elektronik</p>
-        </div>
-        <div class="category-item">
-            <img src="https://via.placeholder.com/200" alt="Kategori 4">
-            <p>Dekorasi</p>
-        </div>
+        @if ($products->isEmpty())
+            <p>Tidak ada produk tersedia saat ini.</p>
+        @else
+            @foreach ($products as $product)
+                <div class="category-item">
+                    <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                    <p>{{ $product->name }}</p>
+                    <p>Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                </div>
+            @endforeach
+        @endif
     </div>
 </section>
 @endsection
