@@ -1,5 +1,13 @@
 <x-app-layout>
     <style>
+        body {
+            background-image: url('{{ asset("images/furniture.jpg") }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
         /* Styling untuk header section */
         .header-section {
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1200x400/?furniture');

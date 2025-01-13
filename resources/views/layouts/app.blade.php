@@ -108,13 +108,6 @@
            width: 100%;
        }
 
-       .footer {
-           background: #1f2937;
-           color: white;
-           text-align: center;
-           padding: 1rem;
-           margin-top: auto;
-       }
 
        /* Responsive adjustments */
        @media (max-width: 768px) {
@@ -175,10 +168,7 @@
        @endif
    </main>
 
-   <!-- Footer -->
-   <footer class="footer">
-       <p>&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
-   </footer>
+  
 
    <script>
        // Toggle dropdown menu

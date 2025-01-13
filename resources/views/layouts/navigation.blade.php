@@ -4,22 +4,15 @@
             <!-- Logo -->
             <div class="logo-container">
                 <a href="{{ url('/') }}" class="brand">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo-image">
-                    Furniture Website
+                    <span>Brand</span>
                 </a>
             </div>
 
             <!-- Navigation Links -->
             <div class="nav-links desktop-nav">
-                <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">
-                    Home
-                </a>
-                <a href="{{ route('products.index') }}" class="{{ request()->is('products*') ? 'active' : '' }}">
-                    Products
-                </a>
-                <a href="{{ route('contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">
-                    Contact
-                </a>
+                <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Dashboard</a>
+                <a href="{{ route('products.index') }}" class="{{ request()->is('products*') ? 'active' : '' }}">Products</a>
+                <a href="{{ route('contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
 
                 <!-- Authentication Links -->
                 @auth
@@ -27,16 +20,14 @@
                         <button class="user-button">
                             {{ Auth::user()->name }}
                             <svg class="dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                             </svg>
                         </button>
                         <div class="dropdown-content" style="display: none;">
                             <a href="{{ route('profile.edit') }}">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="dropdown-button">
-                                    Logout
-                                </button>
+                                <button type="submit" class="dropdown-button">Logout</button>
                             </form>
                         </div>
                     </div>
@@ -57,22 +48,14 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" style="display: none;">
-        <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">
-            Home
-        </a>
-        <a href="{{ route('products.index') }}" class="{{ request()->is('products*') ? 'active' : '' }}">
-            Products
-        </a>
-        <a href="{{ route('contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">
-            Contact
-        </a>
+        <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Dashboard</a>
+        <a href="{{ route('products.index') }}" class="{{ request()->is('products*') ? 'active' : '' }}">Products</a>
+        <a href="{{ route('contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
         @auth
             <a href="{{ route('profile.edit') }}">Profile</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="mobile-logout-button">
-                    Logout
-                </button>
+                <button type="submit" class="mobile-logout-button">Logout</button>
             </form>
         @else
             <a href="{{ route('login') }}">Login</a>
@@ -84,7 +67,7 @@
 <style>
     .nav-main {
         background: #1565ed;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .nav-container {
@@ -106,18 +89,10 @@
     }
 
     .brand {
-        display: flex;
-        align-items: center;
         font-size: 1.5rem;
         font-weight: bold;
         color: white;
         text-decoration: none;
-    }
-
-    .logo-image {
-        height: 2.5rem;
-        width: auto;
-        margin-right: 0.5rem;
     }
 
     .nav-links {
@@ -169,7 +144,7 @@
         top: 100%;
         background: white;
         border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         min-width: 10rem;
         margin-top: 0.5rem;
     }
@@ -182,10 +157,6 @@
         text-decoration: none;
         width: 100%;
         text-align: left;
-        border: none;
-        background: none;
-        font-size: 1rem;
-        cursor: pointer;
     }
 
     .dropdown-content a:hover,
@@ -221,9 +192,6 @@
         text-decoration: none;
         width: 100%;
         text-align: left;
-        border: none;
-        background: none;
-        font-size: 1rem;
     }
 
     .mobile-menu a:hover,
@@ -251,7 +219,7 @@
 </style>
 
 <script>
-    // Toggle dropdown menu
+    // Dropdown menu toggle
     const userButton = document.querySelector('.user-button');
     const dropdownContent = document.querySelector('.dropdown-content');
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
@@ -260,8 +228,7 @@
     if (userButton && dropdownContent) {
         userButton.addEventListener('click', (e) => {
             e.stopPropagation();
-            dropdownContent.style.display = 
-                dropdownContent.style.display === 'none' ? 'block' : 'none';
+            dropdownContent.style.display = dropdownContent.style.display === 'none' ? 'block' : 'none';
         });
 
         window.addEventListener('click', () => {
@@ -271,8 +238,7 @@
 
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.style.display = 
-                mobileMenu.style.display === 'none' ? 'block' : 'none';
+            mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'block' : 'none';
         });
     }
 </script>

@@ -140,7 +140,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="/" class="brand">Furniture Website</a>
+        <a href="/" class="brand">Furniture Store</a>
     </header>
 
     <main class="main-content">

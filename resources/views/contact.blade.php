@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.app')
+
+@section('content')
     <style>
         body {
             margin: 0;
@@ -10,78 +10,11 @@
             background: #f5f5f5;
         }
         body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background-image: url('./images/furniture.jpg');
+            background-image: url('{{ asset("images/furniture.jpg") }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-        }
-
-        .header {
-            background: #1565ed;
-            padding: 1rem 2rem;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .user-menu {
-            position: relative;
-            display: inline-block;
-        }
-
-        .user-button {
-            background: none;
-            border: 1px solid white;
-            color: white;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .dropdown-content {
-            position: absolute;
-            right: 0;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            border-radius: 4px;
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: #333;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
         }
 
         .main-content {
@@ -151,30 +84,25 @@
         }
 
         .footer {
-            background: #1f2937;
+            background-color: #1565ed;
             color: white;
             text-align: center;
-            padding: 1rem;
+            padding: 0.8rem 0;
             margin-top: 2rem;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
-</head>
-<body>
-    <header class="header">
-        <a href="/" class="brand">Furniture Website</a>
-        <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/contact">Contact</a>
-            <div class="user-menu">
-                <button class="user-button">Wahyu Ramadhani</button>
-                <div class="dropdown-content" style="display: none;">
-                    <a href="/profile">Profile</a>
-                    <a href="/logout">Logout</a>
-                </div>
-            </div>
-        </nav>
-    </header>
 
     <main class="main-content">
         <div class="contact-form">
@@ -198,25 +126,6 @@
     </main>
 
     <footer class="footer">
-        <p>© 2025 Laravel. All rights reserved.</p>
+        <p>&copy; 2025 Laravel. All rights reserved. <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
     </footer>
-
-    <script>
-        // Toggle dropdown menu
-        const userButton = document.querySelector('.user-button');
-        const dropdownContent = document.querySelector('.dropdown-content');
-
-        userButton.addEventListener('click', () => {
-            dropdownContent.style.display = 
-                dropdownContent.style.display === 'none' ? 'block' : 'none';
-        });
-
-        // Close dropdown when clicking outside
-        window.addEventListener('click', (e) => {
-            if (!e.target.matches('.user-button')) {
-                dropdownContent.style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+@endsection
