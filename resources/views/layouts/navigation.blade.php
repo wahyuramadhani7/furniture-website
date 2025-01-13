@@ -1,16 +1,11 @@
 <nav class="nav-main">
     <div class="nav-container">
         <div class="nav-content">
-            <!-- Logo -->
-            <div class="logo-container">
-                <a href="{{ url('/') }}" class="brand">
-                    <span>Brand</span>
-                </a>
-            </div>
+            
 
             <!-- Navigation Links -->
             <div class="nav-links desktop-nav">
-                <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a>
                 <a href="{{ route('products.index') }}" class="{{ request()->is('products*') ? 'active' : '' }}">Products</a>
                 <a href="{{ route('contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
 

@@ -124,8 +124,4 @@
             </form>
         </div>
     </main>
-
-    <footer class="footer">
-        <p>&copy; 2025 Laravel. All rights reserved. <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
-    </footer>
 @endsection

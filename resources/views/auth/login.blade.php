@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Furniture Store</title>
     <style>
         body {
             margin: 0;
@@ -12,21 +15,26 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .header {
             background: #1565ed;
             padding: 1rem 2rem;
             color: white;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .brand {
             font-size: 1.5rem;
             font-weight: bold;
-            margin: 0;
             color: white;
             text-decoration: none;
         }
@@ -43,11 +51,13 @@
         }
 
         .main-content {
-            min-height: calc(100vh - 60px);
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .login-container {
@@ -58,10 +68,10 @@
             width: 100%;
             max-width: 400px;
             backdrop-filter: blur(5px);
+            text-align: center;
         }
 
         .login-header {
-            text-align: center;
             color: #1565ed;
             margin-bottom: 2rem;
         }
@@ -95,6 +105,7 @@
         .remember-me {
             display: flex;
             align-items: center;
+            justify-content: center;
             margin-bottom: 1.5rem;
         }
 
@@ -123,7 +134,6 @@
         .links-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-top: 1rem;
         }
 
@@ -153,12 +163,12 @@
                 
                 <div class="form-group">
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-input" id="email" type="email" name="email" required autofocus />
+                    <input class="form-input" id="email" type="email" name="email" required autofocus>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
-                    <input class="form-input" id="password" type="password" name="password" required />
+                    <input class="form-input" id="password" type="password" name="password" required>
                 </div>
                 
                 <div class="remember-me">

@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,7 +42,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-
+Route::resource('admin', AdminController::class);
 
 // Include routes untuk autentikasi (login, register, dll)
 require __DIR__ . '/auth.php';
