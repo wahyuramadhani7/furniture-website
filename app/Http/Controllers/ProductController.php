@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product; // Pastikan model Product diimpor
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        // Anda dapat menambahkan data produk di sini untuk ditampilkan pada view
-        $products = []; // Contoh data kosong
+        // Ambil semua produk dari database
+        $products = Product::all(); // Atau bisa menggunakan query builder lainnya sesuai kebutuhan
 
-        return view('products.index', compact('products'));
+        // Kirim data produk ke view
+        return view('home', compact('products'));
     }
 }
+

@@ -1,79 +1,179 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url('./images/furniture.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
 
-@section('content')
-<div class="d-flex flex-column justify-content-between vh-100 bg-light">
-    <!-- Header -->
-    <header class="bg-primary text-white py-3 shadow-sm">
-        <div class="container d-flex justify-content-between align-items-center">
-            <h1 class="h4 mb-0">Furniture Website</h1>
-            <nav>
-                <a href="{{ route('home') }}" class="text-white text-decoration-none me-3">Home</a>
-                <a href="{{ route('products.index') }}" class="text-white text-decoration-none me-3">Products</a>
-                <a href="{{ route('contact') }}" class="text-white text-decoration-none">Contact</a>
-            </nav>
-        </div>
+        .header {
+            background: #1565ed;
+            padding: 1rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .main-content {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(5px);
+        }
+
+        .login-header {
+            text-align: center;
+            color: #1565ed;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1565ed;
+            box-shadow: 0 0 0 2px rgba(21, 101, 237, 0.2);
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-me input {
+            margin-right: 0.5rem;
+        }
+
+        .button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #1565ed;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .button:hover {
+            background: #1557b0;
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .links-container a {
+            color: #1565ed;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .links-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="brand">Furniture Website</a>
     </header>
 
-    <!-- Login Form -->
-    <main class="flex-grow-1 d-flex justify-content-center align-items-center">
-        <div class="card shadow-lg border-0" style="width: 400px; border-radius: 15px;">
-            <div class="card-header text-center bg-primary text-white" style="border-radius: 15px 15px 0 0;">
-                <h3 class="mb-0">Login</h3>
+    <main class="main-content">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Login</h2>
             </div>
-            <div class="card-body p-4">
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <!-- Email Input -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
-                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus 
-                            placeholder="Enter your email">
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <!-- Password Input -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
-                            name="password" required autocomplete="current-password" placeholder="Enter your password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <!-- Remember Me Checkbox -->
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="remember" 
-                            name="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="form-check-label" for="remember">Remember me</label>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">Log in</button>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer text-center bg-white" style="border-radius: 0 0 15px 15px;">
-                <small>
-                    <a href="{{ route('password.request') }}" class="text-decoration-none text-primary">Forgot your password?</a>
-                </small>
-            </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-input" id="email" type="email" name="email" required autofocus />
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-input" id="password" type="password" name="password" required />
+                </div>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                
+                <button type="submit" class="button">Log in</button>
+                
+                <div class="links-container">
+                    <a href="{{ route('password.request') }}">Forgot your password?</a>
+                    <a href="{{ route('register') }}">Register</a>
+                </div>
+            </form>
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-primary text-white py-3 mt-4 shadow-sm">
-        <div class="container text-center">
-            <p class="mb-0">© 2025 Furniture Website. All rights reserved.</p>
-        </div>
-    </footer>
-</div>
-@endsection
+</body>
+</html>

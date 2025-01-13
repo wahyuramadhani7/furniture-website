@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,11 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 // Route untuk halaman Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
 
 // Include routes untuk autentikasi (login, register, dll)
 require __DIR__ . '/auth.php';
